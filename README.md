@@ -23,4 +23,16 @@ So in our case we use 2 Extended kalman filters. One is used to find out the pit
 
 The other filter is used to find out the velocity and cooridnates of the rover, it is feeded with the same output from the 9-DOF IMU in addition with the longitude and latitude given by the GPS module. The output is feeded to the global_map_representation unit of the **localization thread**.
 
+##Stereo setup
+A stereo camera is a type of camera with two or more image sensors. This allows the camera to simulate human binocular vision and therefore gives it the ability to perceive depth.
+
+#### Human binocular vision
+The human binocular vision perceives depth by using Stereo disparity which refers to the difference in image location of an object seen by the left and right eyes, resulting from the eyes’ horizontal separation.
+
+The brain uses this binocular disparity to extract depth information from the two-dimensional retinal images which are known as stereopsis.
+
+The rover is generating a 3D image if the surrounding using the 2 cameras which is then feeded to the localization thread.
+
 ## Localization Thread
+
+### Stereo Visual odometry
