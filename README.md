@@ -31,44 +31,60 @@ The human binocular vision perceives depth by using Stereo disparity which refer
 
 The brain uses this binocular disparity to extract depth information from the two-dimensional retinal images which are known as stereopsis.
 
-The rover is generating a 3D image if the surrounding using the 2 cameras which is then feeded to the localization thread.
+The rover is generating a 3D image if the surrounding using the 2 cameras which is then feeded to the localization thread, Obstacle detection and motion planning thread and ball detection unit.
 
 ## Localization Thread
 
 ### Stereo Visual odometry
 
 #### What is Visual odometry?
-VO is the process of estimating the camera’s relative motion
-by analyzing a sequence of camera images. VO is defined as the process of estimating the robot’s motion
-(translation and rotation with respect to a reference frame)
-by observing a sequence of images of its environment. VO
-is a particular case of a technique known as Structure From
-Motion (SFM) that tackles the problem of 3D reconstruction
-of both the structure of the environment and camera poses
-from sequentially ordered or unordered image sets.
+VO is the process of estimating the camera’s relative motion by analyzing a sequence of camera images. VO is defined as the process of estimating the robot’s motion (translation and rotation with respect to a reference frame) by observing a sequence of images of its environment. VO is a particular case of a technique known as Structure From Motion (SFM) that tackles the problem of 3D reconstruction of both the structure of the environment and camera poses from sequentially ordered or unordered image sets.
 
 The output from the cameras is feeded to stereo_visual_odometry unit and a number of operations are perfored to convert the 3D to 2D motion estimation.
 
-**1. Feature detection**
+**1. Feature detection:**
 The 2 images from the stereo camera are feeded to this OpenCV function which detects features from the images.The output from this function is then passed to TriangulatePoints().
 
-**2. Triangulate Points**
+**2. Triangulate Points:**
 This function triangulates the 3d position of 2d correspondences between the two images.
 
-**3. RANSAC()**
+**3. RANSAC():**
 RANSAC is abbreviation of RANdom SAmple Consensus, in computer vision, we use it as a method to calculate homography between two images.
 
+The output from this is passed to the local_map_optimization function.
+
+### Local Map Optimization
+The general idea of graph optimization is to express the SLAM problem as a graph structure.
+
+**G2o:** g2o, short for General (Hyper) Graph Optimization, is a C++ framework for performing the optimization of nonlinear least squares problems that can be embedded as a graph or in a hyper-graph.
+
+Two functions of the G2o library are used. Sparse Optimization adn SE3 Quat. These functions give us the optimized local coordinates and optimized 3D coordinates.
+
+The Visual point cloud function is used to create a map of the points.
+
+The local cooridnates are passed to the global map representation unit.
+
+### Global Map Representation
+
+Here the local states are used to find the current states of the rover like the position, velocity and direction. The local and global states represent the rover position on the terrain as well as on the global map.
+
+The current global states and dynamic constraints of the rover are passed to the **Obstacle detection and motion planning thread**.
 
 
-Resources used:
-Kalman and extended kalman filter:
-https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
-https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
-https://towardsdatascience.com/extended-kalman-filter-43e52b16757d
-Stereo Vision:
-https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
-http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf
-Localisation thread:
-https://medium.com/machine-learning-world/feature-extraction-and-similar-image-search-with-opencv-for-newbies-3c59796bf774
-http://eric-yuan.me/ransac/
-https://link.springer.com/article/10.1007/s40903-015-0032-7
+## Obstacle Detection and Motion Planning Thread
+
+Resources used: <br />
+Kalman and extended kalman filter: <br />
+* https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
+* https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
+* https://towardsdatascience.com/extended-kalman-filter-43e52b16757d <br />
+Stereo Vision:<br />
+* https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
+* http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf <br />
+Localisation thread:< br />
+* https://medium.com/machine-learning-world/feature-extraction-and-similar-image-search-with-opencv-for-newbies-3c59796bf774
+* http://eric-yuan.me/ransac/
+* https://link.springer.com/article/10.1007/s40903-015-0032-7 <br />
+G2o:<br />
+* https://fzheng.me/2016/03/15/g2o-demo/
+* https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf
