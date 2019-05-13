@@ -36,3 +36,39 @@ The rover is generating a 3D image if the surrounding using the 2 cameras which 
 ## Localization Thread
 
 ### Stereo Visual odometry
+
+#### What is Visual odometry?
+VO is the process of estimating the camera’s relative motion
+by analyzing a sequence of camera images. VO is defined as the process of estimating the robot’s motion
+(translation and rotation with respect to a reference frame)
+by observing a sequence of images of its environment. VO
+is a particular case of a technique known as Structure From
+Motion (SFM) that tackles the problem of 3D reconstruction
+of both the structure of the environment and camera poses
+from sequentially ordered or unordered image sets.
+
+The output from the cameras is feeded to stereo_visual_odometry unit and a number of operations are perfored to convert the 3D to 2D motion estimation.
+
+**1. Feature detection**
+The 2 images from the stereo camera are feeded to this OpenCV function which detects features from the images.The output from this function is then passed to TriangulatePoints().
+
+**2. Triangulate Points**
+This function triangulates the 3d position of 2d correspondences between the two images.
+
+**3. RANSAC()**
+RANSAC is abbreviation of RANdom SAmple Consensus, in computer vision, we use it as a method to calculate homography between two images.
+
+
+
+Resources used:
+Kalman and extended kalman filter:
+https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
+https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
+https://towardsdatascience.com/extended-kalman-filter-43e52b16757d
+Stereo Vision:
+https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
+http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf
+Localisation thread:
+https://medium.com/machine-learning-world/feature-extraction-and-similar-image-search-with-opencv-for-newbies-3c59796bf774
+http://eric-yuan.me/ransac/
+https://link.springer.com/article/10.1007/s40903-015-0032-7
