@@ -73,18 +73,34 @@ The current global states and dynamic constraints of the rover are passed to the
 
 ## Obstacle Detection and Motion Planning Thread
 
+### Detect Obstacles
+
+#### What is a Disparity map?
+Disparity refers to the difference in location of an object in corresponding two (left and right) images as seen by the left and right eye which is created due to parallax (eyes’ horizontal separation). The brain uses this disparity to calculate depth information from the two dimensional images.
+The disparity of a pixel is equal to the shift value that leads to minimum sum-of-squared-differences for that pixel.
+
+#### StereoSGBM
+Stereo SGBM stands for semi block matching algorithm. StereoSGBM is used to get the disparity map.Then the disparity map is passed to the calc_v_disp() function.
+
+#### V-disparity
+Each row of the V-disparity image is a histogram of the various values of disparity that appeared on that row in the disparity map.
+
+When done right, the disparities of the points on the ground plane will appear as a strong line in the V-disparity map.V disparity map is used to calculate the road area.
+
 Resources used: <br />
-Kalman and extended kalman filter: <br />
+  Kalman and extended kalman filter: <br />
 * https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
 * https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
 * https://towardsdatascience.com/extended-kalman-filter-43e52b16757d <br />
 Stereo Vision:<br />
 * https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
 * http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf <br />
-Localisation thread:< br />
+Localisation thread:<br />
 * https://medium.com/machine-learning-world/feature-extraction-and-similar-image-search-with-opencv-for-newbies-3c59796bf774
 * http://eric-yuan.me/ransac/
 * https://link.springer.com/article/10.1007/s40903-015-0032-7 <br />
 G2o:<br />
 * https://fzheng.me/2016/03/15/g2o-demo/
-* https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf
+* https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf <br />
+Disparity Maps: <br />
+* https://jayrambhia.com/blog/disparity-mpas
