@@ -151,10 +151,10 @@ G2o:<br />
 * https://fzheng.me/2016/03/15/g2o-demo/
 * https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf <br />
 Disparity Maps: <br />
-* https://jayrambhia.com/blog/disparity-mpas
+* https://jayrambhia.com/blog/disparity-mpas <br />
 V-disparity: <br/>
-* https://pdfs.semanticscholar.org/1e1f/3aa8c1d2adeeda6b7c2ca08f2d4a63609bae.pdf
+* https://pdfs.semanticscholar.org/1e1f/3aa8c1d2adeeda6b7c2ca08f2d4a63609bae.pdf <br />
 Hough Transformation: <br />
-* http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm
+* http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm <br />
 Contours: <br/>
 * https://docs.opencv.org/3.3.1/d4/d73/tutorial_py_contours_begin.html
