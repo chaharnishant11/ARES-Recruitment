@@ -116,7 +116,7 @@ Contours can be explained simply as a curve joining all the continuous points (a
 
 So Contour_detection() is used to detect the objects in the image which are passes by the **Stereo Setup**.
 
-Then we use color detetction for green color and we get the desired output. 
+Then we use color detetction for green color and we get the desired output.
 
 
 
@@ -134,8 +134,9 @@ Then we use color detetction for green color and we get the desired output.
 
 
 
-Resources used: <br />
-  Kalman and extended kalman filter: <br />
+### Resources used:
+<br />
+Kalman and extended kalman filter: <br />
 * https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
 * https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
 * https://towardsdatascience.com/extended-kalman-filter-43e52b16757d <br />
@@ -151,5 +152,9 @@ G2o:<br />
 * https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf <br />
 Disparity Maps: <br />
 * https://jayrambhia.com/blog/disparity-mpas
+V-disparity: <br/>
+* https://pdfs.semanticscholar.org/1e1f/3aa8c1d2adeeda6b7c2ca08f2d4a63609bae.pdf
 Hough Transformation: <br />
 * http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm
+Contours: <br/>
+* https://docs.opencv.org/3.3.1/d4/d73/tutorial_py_contours_begin.html
