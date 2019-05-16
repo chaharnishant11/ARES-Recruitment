@@ -135,26 +135,25 @@ Then we use color detetction for green color and we get the desired output.
 
 
 ### Resources used:
-<br />
-Kalman and extended kalman filter: <br />
-* https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
-* https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
-* https://towardsdatascience.com/extended-kalman-filter-43e52b16757d <br />
-Stereo Vision:<br />
-* https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
-* http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf <br />
-Localisation thread:<br />
-* https://medium.com/machine-learning-world/feature-extraction-and-similar-image-search-with-opencv-for-newbies-3c59796bf774
-* http://eric-yuan.me/ransac/
-* https://link.springer.com/article/10.1007/s40903-015-0032-7 <br />
-G2o:<br />
-* https://fzheng.me/2016/03/15/g2o-demo/
-* https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf <br />
-Disparity Maps: <br />
-* https://jayrambhia.com/blog/disparity-mpas <br />
-V-disparity: <br/>
-* https://pdfs.semanticscholar.org/1e1f/3aa8c1d2adeeda6b7c2ca08f2d4a63609bae.pdf <br />
-Hough Transformation: <br />
-* http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm <br />
-Contours: <br/>
-* https://docs.opencv.org/3.3.1/d4/d73/tutorial_py_contours_begin.html
+- Kalman and extended kalman filter: 
+  - https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
+  - https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
+  - https://towardsdatascience.com/extended-kalman-filter-43e52b16757d 
+-Stereo Vision:
+  - https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
+  - http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf
+- Localisation thread:
+  - https://medium.com/machine-learning-world/feature-extraction-and-similar-image-search-with-opencv-for-newbies-3c59796bf774
+  - http://eric-yuan.me/ransac/
+  - https://link.springer.com/article/10.1007/s40903-015-0032-7 
+- G2o:
+  - https://fzheng.me/2016/03/15/g2o-demo/ 
+  - https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf 
+- Disparity Maps: 
+  - https://jayrambhia.com/blog/disparity-mpas 
+- V-disparity: 
+  - https://pdfs.semanticscholar.org/1e1f/3aa8c1d2adeeda6b7c2ca08f2d4a63609bae.pdf 
+- Hough Transformation:
+  - http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm 
+- Contours:
+  - https://docs.opencv.org/3.3.1/d4/d73/tutorial_py_contours_begin.html
