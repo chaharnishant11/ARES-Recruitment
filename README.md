@@ -23,7 +23,7 @@ So in our case we use 2 Extended kalman filters. One is used to find out the pit
 
 The other filter is used to find out the velocity and cooridnates of the rover, it is feeded with the same output from the 9-DOF IMU in addition with the longitude and latitude given by the GPS module. The output is feeded to the global_map_representation unit of the **localization thread**.
 
-##Stereo setup
+## STEREO SETUP
 A stereo camera is a type of camera with two or more image sensors. This allows the camera to simulate human binocular vision and therefore gives it the ability to perceive depth.
 
 #### Human binocular vision
@@ -33,7 +33,7 @@ The brain uses this binocular disparity to extract depth information from the tw
 
 The rover is generating a 3D image if the surrounding using the 2 cameras which is then feeded to the localization thread, Obstacle detection and motion planning thread and ball detection unit.
 
-## Localization Thread
+## LOCALISATION THREAD
 
 ### Stereo Visual odometry
 
@@ -71,7 +71,7 @@ Here the local states are used to find the current states of the rover like the 
 The current global states and dynamic constraints of the rover are passed to the **Obstacle detection and motion planning thread**.
 
 
-## Obstacle Detection and Motion Planning Thread
+## OBSTACLE DETECTION AND MOTION PLANNING THREAD
 
 ### Detect Obstacles
 
@@ -86,6 +86,53 @@ Stereo SGBM stands for semi block matching algorithm. StereoSGBM is used to get 
 Each row of the V-disparity image is a histogram of the various values of disparity that appeared on that row in the disparity map.
 
 When done right, the disparities of the points on the ground plane will appear as a strong line in the V-disparity map.V disparity map is used to calculate the road area.
+
+#### Hough Transformation
+The Hough transform is a technique which can be used to isolate features of a particular shape within an image.
+
+So we get the disparity map from StereoSGBM and the road map after hough transformation.Then we subtract the road map from the disparity map to get the Obstacle and then we project them to in the 3D point cloud.
+
+### Motion Planner
+
+#### Get required variables
+The values of all the required variables are passed from the previous steps. The speed and direction of the rover are passed from the **Localization thread** and the obstacle point cloud from the obstale detection function.
+
+**OMPL**, the Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms.
+
+We use OMPL library's function to find the shortest path avoiding all the obstacles considering rovers constraints. Then commands are generated for each of the motor.
+
+These commands are passed to the motors and the rover works accordingly.
+
+## ROS NODE FOR MOTION CONTROL
+
+ROS stands for Robot Operating system. So the commands generated from the obstacle detection and motion planning thread are passed to this unit where it gives instructions to the rover and according to the instructions the rover moves.
+
+In our rover there is a seperate motor for each wheel. So seperate instructions are generated for each wheel.
+
+## BALL DETECTION
+
+#### What are contours?
+Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition.
+
+So Contour_detection() is used to detect the objects in the image which are passes by the **Stereo Setup**.
+
+Then we use color detetction for green color and we get the desired output. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Resources used: <br />
   Kalman and extended kalman filter: <br />
@@ -104,3 +151,5 @@ G2o:<br />
 * https://www.cct.lsu.edu/~kzhang/papers/g2o.pdf <br />
 Disparity Maps: <br />
 * https://jayrambhia.com/blog/disparity-mpas
+Hough Transformation: <br />
+* http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm
