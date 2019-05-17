@@ -139,7 +139,7 @@ Then we use color detetction for green color and we get the desired output.
   - https://in.mathworks.com/videos/understanding-kalman-filters-part-1-why-use-kalman-filters--1485813028675.html
   - https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
   - https://towardsdatascience.com/extended-kalman-filter-43e52b16757d 
--Stereo Vision:
+- Stereo Vision:
   - https://www.e-consystems.com/blog/camera/what-is-a-stereo-vision-camera/
   - http://www.cs.cmu.edu/~kaess/vslam_cvpr14/media/VSLAM-Tutorial-CVPR14-A12-StereoVO.pdf
 - Localisation thread:
